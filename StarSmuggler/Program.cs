@@ -4,10 +4,10 @@ namespace SpaceAdventure
 {
     class Program
     {
-        static Nomad SchiffA = new Nomad();
-        static object SchiffB = new Aurora();
+        static Nomad SchiffA = new Nomad(); //Schiff des Spielers
+        static object SchiffB = new Aurora(); // Gegnerschiffe. Aurora auf Standard gesetzt.
 
-        static void Main(string[] args)
+        static void Main(string[] args) //Spielablauf
         {
             Console.WriteLine("Du hörst auf Grimhex wie jemand über ein Artefakt spricht.");
             Console.WriteLine("Möchtest du diesem Hinweis folgen? (ja/nein)");
@@ -19,48 +19,48 @@ namespace SpaceAdventure
             }
 
             Console.WriteLine("Du erfährst, dass auf Lorville jemand darüber Bescheid weiß.");
-            Console.WriteLine("Reise nach Lorville...");
+            Console.WriteLine("Reise nach Lorville, Planet Hurston");
             Console.WriteLine("Im Arbeiterviertel von Lorville erfährst du, dass ein Alienschiff auf Microtech abgestürzt ist.");
             Console.WriteLine("Du bezahlst Geld und bekommst die Koordinaten.");
-            Console.WriteLine("Reise nach Microtech...");
+            Console.WriteLine("Reise zum Planeten Microtech...");
 
             Console.WriteLine("Ankunft an der Absturzstelle auf Microtech.");
-            Console.WriteLine("Eine Aurora greift dich an!");
+            Console.WriteLine("Jemand Anderes hatte offenbar die gleiche Idee. Eine Aurora greift dich an!");
             SchiffB = new Aurora();
             Kampfhandlung();
 
-            Console.WriteLine("Du findest ein zerstörtes Vanduul-Schiff mit intaktem Computerkern.");
+            Console.WriteLine("Du findest ein abgestürztes Vanduul-Schiff mit intaktem Computerkern.");
             Console.WriteLine("Du musst damit ins Pyro-System flüchten!");
             Console.WriteLine("Willst du ins Pyro-System flüchten? (ja/nein)");
             antwort = Console.ReadLine();
-            if (antwort != "ja")
+            if (antwort != "ja") //Interaktion-Entscheidung
             {
-                Console.WriteLine("Die Sicherheitskräfte nehmen dich fest -> Game Over.");
+                Console.WriteLine("Die Sicherheitskräfte von Microtech nehmen dich fest -> Game Over.");
                 return;
             }
 
             Console.WriteLine("Während des Fluges kannst du dein Schiff reparieren. Reparieren? (ja/nein)");
             antwort = Console.ReadLine();
-            if (antwort == "ja")
+            if (antwort == "ja") //Interaktion-Entscheidung
             {
                 Reparieren();
             }
 
-            Console.WriteLine("Ankunft am Pyro-Gateway, ein Kopfgeldjäger hat dich aufgespürt!");
+            Console.WriteLine("Ankunft am Pyro-Gateway. Ein Kopfgeldjäger hat dich aufgespürt!");
             Console.WriteLine("Kämpfen? (ja/nein)");
             antwort = Console.ReadLine();
-            if (antwort != "ja")
+            if (antwort != "ja") //Interaktion-Entscheidung
             {
                 Console.WriteLine("Du wirst gefangen genommen -> Game Over.");
                 return;
             }
 
-            SchiffB = new Avenger();
-            Kampfhandlung();
+            SchiffB = new Avenger(); //Definiere neuen Gegner
+            Kampfhandlung();    // rufe Kampfhandlung-Methode mit neuem Gegner auf
 
             Console.WriteLine("Willst du dein Schiff reparieren? (ja/nein)");
             antwort = Console.ReadLine();
-            if (antwort == "ja")
+            if (antwort == "ja") //Interaktion-Entscheidung
             {
                 Reparieren();
             }
@@ -71,42 +71,42 @@ namespace SpaceAdventure
             }
 
             Console.WriteLine("Du bist endlich in Pyro angekommen und reist zur Checkmate Station.");
-            Console.WriteLine("Ankunft: Du wirst von einem Mustang angegriffen!");
-            SchiffB = new Mustang();
-            Kampfhandlung();
+            Console.WriteLine("Ankunft: Du wirst von einem Piratenschiff (Mustang) angegriffen!");
+            SchiffB = new Mustang(); // rufe neuen Gegner auf
+            Kampfhandlung(); // Kampfhandlung mit neuem Gegner
 
             Console.WriteLine("Willst du dein Schiff reparieren? (ja/nein)");
             antwort = Console.ReadLine();
-            if (antwort == "ja")
+            if (antwort == "ja") //Interaktion-Entscheidung
             {
                 Reparieren();
             }
 
-            Console.WriteLine("Auf Checkmate Station erfährst du, dass jemand auf Terminus den Kern auslesen kann.");
+            Console.WriteLine("Auf Checkmate Station erfährst du, dass jemand auf dem Planeten Terminus den Kern auslesen kann.");
             Console.WriteLine("Willst du dein Schiff reparieren und Vorräte besorgen? (ja/nein)");
             antwort = Console.ReadLine();
-            if (antwort != "ja")
+            if (antwort != "ja") // Interaktion-Entscheidung
             {
                 Console.WriteLine("Dein Schiff ist nicht flugfähig -> Game Over.");
                 return;
             }
-            Reparieren();
+            Reparieren(); 
 
             Console.WriteLine("Du findest auf Terminus einen Computer-Freak!");
             Console.WriteLine("Er sagt dir, der Kern enthält Spionagedaten: die Vanduul planen einen Angriff auf Microtech!");
-            Console.WriteLine("Du könntest ihn auf Ruin Station verkaufen.");
+            Console.WriteLine("Du könntest den Computerkern auf Ruin Station an den Banu Wikelo verkaufen.");
 
-            Console.WriteLine("Auf dem Weg wirst du von einem Prospektor gerufen. Annehmen? (ja/nein)");
+            Console.WriteLine("Auf dem Weg wirst du von einem Prospektor-Schiff gerufen. Annehmen? (ja/nein)");
             antwort = Console.ReadLine();
-            if (antwort == "nein")
+            if (antwort == "nein") //Interaktion-Entscheidung
             {
                 Console.WriteLine("Du wirst angegriffen!");
                 SchiffB = new Prospektor();
                 Kampfhandlung();
             }
-            else
+            else // Interaktion-Entscheidung: Story-Twist
             {
-                Console.WriteLine("Du wirst bedroht! Gibst du den Kern her? (ja/nein)");
+                Console.WriteLine("Du wirst vom Computerfreak bedroht! Er will den Computerkern. \nEr will ihn selbst verkaufen. Gibst du den Kern her? (ja/nein)");
                 antwort = Console.ReadLine();
                 if (antwort == "ja")
                 {
@@ -115,7 +115,7 @@ namespace SpaceAdventure
                 }
                 else
                 {
-                    Console.WriteLine("Du gibst dem Prospektor Geld und fliegst weiter.");
+                    Console.WriteLine("Du gibst dem Computerfreak Geld und fliegst weiter.");
                 }
             }
 
@@ -128,7 +128,7 @@ namespace SpaceAdventure
             Console.WriteLine("Spiel beendet! :)");
         }
 
-        static void Kampfhandlung()
+        static void Kampfhandlung()  //Funktion Kampf
         {
             dynamic gegner = SchiffB;
 
@@ -160,49 +160,50 @@ namespace SpaceAdventure
             }
         }
 
-        static void Reparieren()
+        static void Reparieren() // Funktion Reparieren
         {
             SchiffA.Rumpf = 100;
             Console.WriteLine("Dein Schiff wurde repariert!");
         }
     }
 
-    public class Aurora
+    // alle Schiffs-Objekte
+    public class Aurora // Artefaktjägerschiff auf Microtech
     {
         public int Rumpf { get; set; } = 50;
         public int Waffen { get; set; } = 10;
     
     }
 
-    public class Mustang
+    public class Mustang // Piratenschiff bei Checkmate Statiion
     {
         public int Rumpf { get; set; } = 40;
         public int Waffen { get; set; } = 15;
      
     }
 
-    public class Avenger
+    public class Avenger //Kopfgeldjäger-Schiff am Pyro-Jumppoint
     {
         public int Rumpf { get; set; } = 60;
         public int Waffen { get; set; } = 25;
      
     }
 
-    public class Arrow
+    public class Arrow //Piratenschiff bei Ruin Station
     {
         public int Rumpf { get; set; } = 45;
         public int Waffen { get; set; } = 20;
       
     }
 
-    public class Prospektor
+    public class Prospektor // Schiff des Computer-Freaks
     {
         public int Rumpf { get; set; } = 60;
         public int Waffen { get; set; } = 10;
        
     }
 
-    public class Nomad
+    public class Nomad // Spieler-Schiff
     {
         public int Rumpf { get; set; } = 100;
         public int Waffen { get; set; } = 25;
